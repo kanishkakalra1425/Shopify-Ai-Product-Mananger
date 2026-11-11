@@ -1,0 +1,16 @@
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo-part {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a img {
+    width: 20px;
+    height: 20px;
+}
+
