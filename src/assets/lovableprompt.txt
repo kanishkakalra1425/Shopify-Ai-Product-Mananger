@@ -1,0 +1,80 @@
+Design and build the complete front-end UI for “Shopify AI Product Manager”,
+a web app where Shopify merchants upload a CSV (or Excel/JSON) of their
+products and AI automatically generates everything needed to publish them on
+Shopify: product images, titles, descriptions, SEO titles, meta descriptions,
+tags, alt text, and a Shopify-ready export.
+
+TECH STACK
+React (Vite) + React Router + Tailwind CSS + GSAP (ScrollTrigger, SplitText,
+@gsap/react useGSAP hook) + Framer Motion + shadcn/ui + Lucide icons.
+Client-side rendered single-page app. Fully responsive (mobile, tablet,
+desktop). Light and dark mode.
+
+BRAND & VISUAL DIRECTION
+
+
+It must instantly feel like a Shopify ecosystem tool: Shopify-inspiredpalette (deep green #004C3F and #008060 as primary, soft off-whitebackgrounds, one warm accent for highlights), shopping-bag andproduct-card motifs, and a clean, trustworthy commerce feel.
+Modern 2027-level aesthetic: soft glassmorphism panels, subtle gradientsand mesh backgrounds, generous whitespace, large rounded corners (16-24px),layered soft shadows, bento-grid layouts, crisp typography (Inter or Geistfor UI, a bold display font for headlines).
+Use micro-illustrations or 3D-style product icons instead of stock photos.
+Avoid clutter. Every screen should have one clear focal point.
+
+
+ANIMATION & INTERACTION
+Use GSAP (with ScrollTrigger and SplitText) for hero, scroll-driven, and
+timeline animations. Use Framer Motion only for small component-level
+interactions (hover, tap, modal, layout transitions, route transitions).
+Never animate the same element with both libraries.
+
+
+Hero: split-text headline reveal, animated gradient/mesh background, and alooping GSAP timeline showing a messy CSV row transforming into a polishedShopify product card (title types in, description fades in, imagematerializes, SEO tags pop in one by one).
+Scroll: ScrollTrigger section reveals with stagger, a pinned “How it works”section where the 3 steps animate as the user scrolls, and subtle parallaxon floating product cards and shapes.
+Upload zone: reacts to drag-over (glow, scale, ripple). On drop, the file”flies” into the processor with a short motion-path animation.
+AI generation: a GSAP master timeline drives the pipeline(Reading file → Writing titles → Crafting descriptions → Optimizing SEO →Generating images → Ready). Each step lights up on completion and productcards build themselves in sequence.
+Micro-interactions: magnetic buttons, hover lift on cards, animated numbercounters, skeleton loaders, and a confetti/success burst on first export.
+Performance: animate only transform and opacity, use useGSAP (orgsap.context()) for cleanup, kill ScrollTriggers on unmount and on routechange, lazy-load heavy sections and routes, keep UI feedback animationsunder 400ms, and respect prefers-reduced-motion via gsap.matchMedia().
+
+
+PAGES / SECTIONS
+
+
+Landing page
+Hero: strong headline (“Turn a spreadsheet into a ready-to-sell Shopifystore”), one-line subtext, a single primary CTA (“Upload your CSV”), andthe animated before/after demo.
+How it works in 3 steps: Upload, AI generates, Export to Shopify.
+Feature bento grid: titles, descriptions, SEO, images, bulk editing.
+Social proof, simple pricing, FAQ, final CTA, minimal footer.
+
+Upload screen
+Big drag-and-drop zone, “Try a sample CSV” button, supported formatslisted, column auto-detection preview with one-click mapping fixes.
+
+Generation screen
+Animated progress pipeline, estimated time remaining, and the ability tokeep browsing while it runs.
+
+Results dashboard
+Product cards with a grid/table toggle. Each card shows the generatedimage, title, description, SEO title, meta description, tags, and alttext.
+Inline editing, per-field “Regenerate”, tone selector (Professional,Playful, Luxury), bulk select and bulk actions.
+Live Shopify-style product page preview and Google search resultpreview for SEO.
+SEO score badge per product with simple improvement suggestions.
+
+Export / Publish
+One-click “Export Shopify CSV” and “Push to Shopify store” (connectstore flow), ending with a celebratory success animation.
+
+
+
+UX PRINCIPLES (very important)
+
+
+Simple, not complex: one primary action per screen, clear visual hierarchy,no more than 3 steps from upload to result.
+Progressive disclosure: advanced options hidden behind “Advanced” toggles.
+Friendly empty states, helpful inline hints, clear error messages with asuggested fix, and undo for destructive actions.
+Keep users engaged: instant visual feedback, a progress sidebar showing howmany products are done, small delightful moments, and smart suggestions(e.g., “3 products have short descriptions, improve them?”).
+Accessible: WCAG AA contrast, keyboard navigation, visible focus states,ARIA labels.
+Fast: lazy-load images, optimistic UI, skeleton states.
+
+
+DELIVERABLES
+
+
+Complete, clean, componentized code with reusable components and mock data(no backend yet, but structured so API calls can be plugged in later).
+A short design system summary: colors, type scale, spacing, radius, andmotion rules (easing curves and durations).
+Suggested folder structure (components, pages, hooks, lib, data).
+Build in this order: design system, landing page, upload flow, generationscreen, results dashboard, export screen.
